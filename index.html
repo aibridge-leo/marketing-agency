@@ -409,7 +409,24 @@ class Component extends DCLogic {
       statsDisplay: showStats ? 'block' : 'none',
       submitted: this.state.submitted,
       notSubmitted: !this.state.submitted,
-      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      onSubmit: async (e) => {
+        e.preventDefault();
+        const f = e.target;
+        const q = sel => { const el = f.querySelector(sel); return el ? el.value : ''; };
+        try {
+          await fetch('/api/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name:     q('input[placeholder="대표자 성함"]'),
+              phone:    q('input[placeholder="연락처 (휴대폰)"]'),
+              industry: q('select'),
+              region:   q('input[placeholder*="지역"]'),
+            }),
+          });
+        } catch (_) { /* best-effort */ }
+        this.setState({ submitted: true });
+      },
       resetForm: () => this.setState({ submitted: false })
     };
   }

@@ -1,53 +1,30 @@
-const fs = require('fs');
-const path = require('path');
 const { OpenAI } = require('openai');
+const { getContext } = require('../lib/rag');
+const { getSupabaseClient } = require('../lib/supabase');
+const { parseBody } = require('../lib/utils');
 
-function loadKnowledgeBase() {
-  const uploadsDir = path.join(process.cwd(), 'uploads');
-  try {
-    const files = fs.readdirSync(uploadsDir).filter(f => f.endsWith('.md'));
-    if (files.length === 0) return '(등록된 지식 베이스 없음)';
-    return files.map(file => {
-      const content = fs.readFileSync(path.join(uploadsDir, file), 'utf-8');
-      return `=== ${file} ===\n${content}`;
-    }).join('\n\n');
-  } catch (e) {
-    console.error('Knowledge base load error:', e);
-    return '(지식 베이스 로드 실패)';
-  }
-}
+const SYSTEM_PROMPT_TEMPLATE = `당신은 JYS마케팅의 AI 상담 챗봇 "JYS봇"입니다.
 
-const knowledgeBase = loadKnowledgeBase();
-
-const SYSTEM_PROMPT = `당신은 JYS마케팅의 AI 상담 챗봇 "JYS봇"입니다.
-
-[JYS마케팅 지식 베이스]
-${knowledgeBase}
+[JYS마케팅 관련 지식]
+{CONTEXT}
 
 [답변 규칙 — 반드시 준수]
-1. 자기소개·대화형 질문 ("이름이 뭐야", "누구야", "뭐 할 수 있어" 등):
+1. 자기소개·대화형 질문 ("이름이 뭐야", "누구야" 등):
    - 챗봇 이름(JYS봇)과 역할(JYS마케팅 AI 상담사)을 자연스럽게 소개
 2. 서비스·정책·회사 관련 질문:
-   - 위 지식 베이스 내용만 사용하여 답변
-   - 관련 내용이 없으면 "더 자세한 내용은 무료 상담을 통해 안내해 드릴게요! (전화: 02-1234-5678)" 로 안내
-3. 무관한 질문 (날씨, 뉴스, 요리 등):
-   - "저는 JYS마케팅 서비스 관련 질문만 답할 수 있어요 😊 마케팅에 대해 궁금한 점이 있으시면 편하게 물어보세요!"
-4. 지식 베이스에 없는 정보는 절대 창작하거나 추측하지 않는다
-5. 답변 스타일: 친근하고 따뜻한 한국어 존댓말, 3~5문장 이내로 간결하게`;
+   - 위 지식만 사용. 없으면 "더 자세한 내용은 무료 상담으로 안내해 드릴게요! (전화: 02-1234-5678)"
+3. 무관한 질문 (날씨, 뉴스 등):
+   - "저는 JYS마케팅 서비스 관련 질문만 답할 수 있어요 😊"
+4. 지식에 없는 내용은 절대 창작·추측 금지
+5. 친근하고 따뜻한 한국어 존댓말, 3~5문장 이내`;
 
-async function parseBody(req) {
-  if (req.body !== undefined) {
-    return typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+async function logChat(supabase, question, answer, source) {
+  if (!supabase) return;
+  try {
+    await supabase.from('chat_logs').insert({ question, answer, context_source: source });
+  } catch (e) {
+    console.error('chat_log insert error:', e);
   }
-  return new Promise((resolve, reject) => {
-    let data = '';
-    req.on('data', chunk => { data += chunk; });
-    req.on('end', () => {
-      try { resolve(JSON.parse(data || '{}')); }
-      catch { reject(new Error('Invalid JSON')); }
-    });
-    req.on('error', reject);
-  });
 }
 
 module.exports = async function handler(req, res) {
@@ -55,12 +32,7 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') {
-    res.statusCode = 200;
-    res.end();
-    return;
-  }
-
+  if (req.method === 'OPTIONS') { res.statusCode = 200; res.end(); return; }
   if (req.method !== 'POST') {
     res.statusCode = 405;
     res.setHeader('Content-Type', 'application/json');
@@ -86,19 +58,29 @@ module.exports = async function handler(req, res) {
       return;
     }
 
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-    const completion = await client.chat.completions.create({
+    // 마지막 사용자 메시지로 RAG 검색
+    const lastUserMsg = [...messages].reverse().find(m => m.role === 'user');
+    const query = lastUserMsg ? lastUserMsg.content : '';
+
+    const { context, source } = await getContext(openai, query);
+    const systemPrompt = SYSTEM_PROMPT_TEMPLATE.replace('{CONTEXT}', context);
+
+    const completion = await openai.chat.completions.create({
       model: 'gpt-5.4-mini',
       messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...messages.slice(-10)
+        { role: 'system', content: systemPrompt },
+        ...messages.slice(-10),
       ],
       max_completion_tokens: 500,
-      temperature: 0.7
+      temperature: 0.7,
     });
 
     const reply = completion.choices[0].message.content;
+
+    // 대화 로그 (best-effort)
+    logChat(getSupabaseClient(), query, reply, source);
 
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 200;

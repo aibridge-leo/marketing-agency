@@ -5,9 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "ingest": "node scripts/ingest.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
     "dotenv": "^16.4.5",
     "openai": "^4.67.0"
   }
