@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Pretendard','Pretendard Variable',sans-serif;color:#EDEFFA;background:#080B1C;-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
+  input,textarea,select{font-family:inherit;}
+  ::placeholder{color:#9AA3C7;}
+  @keyframes jysMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @keyframes jysFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  @keyframes jysRise{from{transform:translateY(12px);}to{transform:translateY(0);}}
+</style>
+</helmet>
+<div style="width:100%;overflow-x:hidden;background:#080B1C;">
+
+  <!-- ===================== NAV ===================== -->
+  <header style="{{ navStyle }}" data-screen-label="Nav">
+    <div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="#top" style="display:flex;align-items:center;gap:11px;">
+        <img src="./uploads/logo.png" alt="JYS마케팅 로고" style="height:32px;width:auto;flex:0 0 auto;">
+        <span style="font-weight:800;font-size:18px;letter-spacing:-0.02em;color:#F5F7FF;">JYS마케팅</span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:28px;">
+        <a href="#why" style="font-size:15px;font-weight:600;color:#C9CEE8;">왜 JYS마케팅</a>
+        <a href="#services" style="font-size:15px;font-weight:600;color:#C9CEE8;">서비스</a>
+        <a href="#process" style="font-size:15px;font-weight:600;color:#C9CEE8;">진행 과정</a>
+        <a href="#reviews" style="font-size:15px;font-weight:600;color:#C9CEE8;">고객 후기</a>
+        <a href="#contact" style="display:inline-flex;align-items:center;height:40px;padding:0 20px;border-radius:{{ btnRadius }};background:{{ ctaGradient }};color:{{ ctaText }};font-size:14px;font-weight:700;box-shadow:0 6px 22px {{ ctaGlow }};">무료 진단 신청</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="top" style="position:relative;overflow:hidden;background:radial-gradient(90% 80% at 82% 8%,rgba(124,58,237,0.42),transparent 60%),radial-gradient(80% 70% at 8% 28%,rgba(37,99,235,0.40),transparent 55%),#0A0E24;">
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:148px 24px 92px;display:flex;flex-wrap:wrap;gap:48px;align-items:center;">
+      <div style="flex:1 1 460px;max-width:600px;animation:jysRise .7s ease both;">
+        <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:999px;background:rgba(255,255,255,0.04);margin-bottom:26px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 10px #4ADE80;"></span>
+          <span style="font-size:13px;font-weight:600;color:#C9CEE8;">350만 소상공인의 마케팅 사각지대</span>
+        </div>
+        <h1 style="font-size:clamp(40px,5.6vw,64px);line-height:1.14;font-weight:800;letter-spacing:-0.03em;margin:0 0 22px;color:#F5F7FF;">골목 가게도<br><span style="background-image:linear-gradient(100deg,#A855F7 0%,#38BDF8 48%,#4ADE80 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">단골이 줄을 섭니다</span></h1>
+        <p style="font-size:clamp(16px,1.6vw,18px);line-height:1.75;color:#A8AFD0;margin:0 0 34px;max-width:520px;">대형 대행사가 외면한 동네 가게를 위해. 네이버 플레이스부터 SNS·광고·단골 관리까지, <strong style="color:#EDEFFA;font-weight:700;">JYS마케팅</strong> 하나에서 매출을 키웁니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;margin-bottom:24px;">
+          <a href="#contact" style="display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;border-radius:{{ btnRadius }};background:{{ ctaGradient }};color:{{ ctaText }};font-size:16px;font-weight:700;box-shadow:0 10px 30px {{ ctaGlow }};">맞춤 진단 리포트 무료 신청</a>
+          <a href="#services" style="display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 26px;border-radius:{{ btnRadius }};background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:#EDEFFA;font-size:16px;font-weight:600;">서비스 둘러보기</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:18px;font-size:13.5px;color:#8A92B8;">
+          <span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#4ADE80;">✓</span> 첫 상담 완전 무료</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#4ADE80;">✓</span> 월 단위 유연 계약</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;"><span style="color:#4ADE80;">✓</span> 평균 7일 내 운영 시작</span>
+        </div>
+      </div>
+
+      <!-- phone mock -->
+      <div style="flex:0 1 360px;display:{{ heroMockDisplay }};position:relative;margin:0 auto;">
+        <div style="position:relative;width:300px;margin:0 auto;background:#0E1330;border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:16px;box-shadow:0 30px 80px rgba(124,58,237,0.30),0 0 0 1px rgba(255,255,255,0.03);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="width:22px;height:22px;border-radius:6px;background:#03C75A;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;">N</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#8A92B8;">NAVER PLACE</span>
+          </div>
+          <div style="font-size:19px;font-weight:800;color:#F5F7FF;margin-bottom:6px;">엄마밥상 · 성수점</div>
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:16px;">
+            <span style="color:#FACC15;font-size:14px;letter-spacing:2px;">★★★★★</span>
+            <span style="font-size:13px;color:#A8AFD0;">4.8 · 리뷰 140</span>
+          </div>
+          <div style="height:150px;border-radius:12px;background:repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 0 10px,rgba(255,255,255,0.01) 10px 20px);display:flex;align-items:center;justify-content:center;margin-bottom:14px;border:1px solid rgba(255,255,255,0.06);">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B73A0;">[ 매장 대표 사진 ]</span>
+          </div>
+          <button style="width:100%;height:46px;border:none;border-radius:11px;background:linear-gradient(135deg,#34D399,#4ADE80);color:#06231A;font-size:15px;font-weight:800;">전화 주문하기</button>
+        </div>
+        <div style="position:absolute;top:-14px;right:-6px;padding:9px 15px;border-radius:999px;background:linear-gradient(135deg,#A855F7,#EC4899);color:#fff;font-size:13px;font-weight:700;box-shadow:0 10px 26px rgba(168,85,247,0.45);animation:jysFloat 4s ease-in-out infinite;">리뷰 0 → 140건 ↑</div>
+        <div style="position:absolute;bottom:34px;left:-18px;padding:9px 15px;border-radius:999px;background:linear-gradient(135deg,#34D399,#4ADE80);color:#06231A;font-size:13px;font-weight:800;box-shadow:0 10px 26px rgba(52,211,153,0.4);animation:jysFloat 4.6s ease-in-out infinite .6s;">월 매출 +60%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div style="overflow:hidden;background:linear-gradient(90deg,#6D28D9,#7C3AED 50%,#6D28D9);padding:16px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="display:flex;width:max-content;animation:jysMarquee 32s linear infinite;">
+      <span style="display:inline-flex;align-items:center;gap:26px;padding-right:26px;font-size:19px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:-0.01em;">네이버 플레이스<span style="color:#67E8F9;">✦</span>SNS 콘텐츠<span style="color:#67E8F9;">✦</span>단골 CRM<span style="color:#67E8F9;">✦</span>퍼포먼스 광고<span style="color:#67E8F9;">✦</span>브랜딩<span style="color:#67E8F9;">✦</span></span>
+      <span style="display:inline-flex;align-items:center;gap:26px;padding-right:26px;font-size:19px;font-weight:800;color:#fff;white-space:nowrap;letter-spacing:-0.01em;">네이버 플레이스<span style="color:#67E8F9;">✦</span>SNS 콘텐츠<span style="color:#67E8F9;">✦</span>단골 CRM<span style="color:#67E8F9;">✦</span>퍼포먼스 광고<span style="color:#67E8F9;">✦</span>브랜딩<span style="color:#67E8F9;">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ===================== STATS ===================== -->
+  <section style="background:#0A0E24;display:{{ statsDisplay }};">
+    <div style="max-width:1200px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;">
+      <div style="border-left:1px solid rgba(255,255,255,0.10);padding-left:22px;"><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(34px,4vw,48px);background-image:linear-gradient(135deg,#34D399,#4ADE80);-webkit-background-clip:text;background-clip:text;color:transparent;">320<span style="font-size:20px;">개</span></div><div style="font-size:14px;color:#9AA3C7;margin-top:6px;">함께한 매장</div></div>
+      <div style="border-left:1px solid rgba(255,255,255,0.10);padding-left:22px;"><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(34px,4vw,48px);background-image:linear-gradient(135deg,#F472B6,#EC4899);-webkit-background-clip:text;background-clip:text;color:transparent;">47<span style="font-size:20px;">%</span></div><div style="font-size:14px;color:#9AA3C7;margin-top:6px;">평균 매출 상승 (6개월)</div></div>
+      <div style="border-left:1px solid rgba(255,255,255,0.10);padding-left:22px;"><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(34px,4vw,48px);background-image:linear-gradient(135deg,#38BDF8,#22D3EE);-webkit-background-clip:text;background-clip:text;color:transparent;">89<span style="font-size:20px;">%</span></div><div style="font-size:14px;color:#9AA3C7;margin-top:6px;">고객 재계약률</div></div>
+      <div style="border-left:1px solid rgba(255,255,255,0.10);padding-left:22px;"><div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(34px,4vw,48px);background-image:linear-gradient(135deg,#A855F7,#7C3AED);-webkit-background-clip:text;background-clip:text;color:transparent;">38<span style="font-size:20px;">건</span></div><div style="font-size:14px;color:#9AA3C7;margin-top:6px;">월 평균 리뷰 증가</div></div>
+    </div>
+    <p style="max-width:1200px;margin:0 auto;padding:0 24px;font-size:12px;color:#5F6792;">* 함께한 일부 매장의 평균치를 바탕으로 한 참고용 수치입니다.</p>
+  </section>
+
+  <!-- ===================== PROBLEM ===================== -->
+  <section id="why" style="background:#0A0E24;scroll-margin-top:80px;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,116px) 24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#A855F7;margin:0 0 16px;font-weight:700;">THE PROBLEM</p>
+      <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.22;font-weight:800;letter-spacing:-0.02em;color:#F5F7FF;margin:0 0 16px;">왜 동네 가게는<br>마케팅에서 <span style="background-image:linear-gradient(100deg,#A855F7,#EC4899);-webkit-background-clip:text;background-clip:text;color:transparent;">길을 잃을까</span></h2>
+      <p style="font-size:17px;line-height:1.7;color:#A8AFD0;margin:0 0 48px;max-width:560px;">대한민국에는 약 350만 명의 소상공인이 있습니다. 하지만 현실은 냉정합니다.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:24px;">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;">
+          <div style="color:#A855F7;margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3 style="font-size:17px;font-weight:700;color:#F5F7FF;margin:0 0 8px;">높은 진입 장벽</h3>
+          <p style="font-size:14px;line-height:1.65;color:#9AA3C7;margin:0;">대형 대행사는 최소 수백만 원의 예산을 요구합니다.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;">
+          <div style="color:#22D3EE;margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 7h6M5 12h14M5 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="15" cy="7" r="2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="17" r="2" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3 style="font-size:17px;font-weight:700;color:#F5F7FF;margin:0 0 8px;">너무 복잡한 도구</h3>
+          <p style="font-size:14px;line-height:1.65;color:#9AA3C7;margin:0;">디지털 마케팅 도구는 혼자 배우기엔 너무 복잡합니다.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;">
+          <div style="color:#EC4899;margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.3-7-9.2A4 4 0 0 1 12 7a4 4 0 0 1 7 3.8C19 15.7 12 20 12 20z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+          <h3 style="font-size:17px;font-weight:700;color:#F5F7FF;margin:0 0 8px;">남지 않는 단골</h3>
+          <p style="font-size:14px;line-height:1.65;color:#9AA3C7;margin:0;">단발성 이벤트로는 지속적인 단골을 만들 수 없습니다.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;">
+          <div style="color:#4ADE80;margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 9v4l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 3h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3 style="font-size:17px;font-weight:700;color:#F5F7FF;margin:0 0 8px;">부족한 시간</h3>
+          <p style="font-size:14px;line-height:1.65;color:#9AA3C7;margin:0;">SNS·블로그·리뷰 관리, 챙길 일은 많은데 시간이 없습니다.</p>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(120deg,rgba(124,58,237,0.18),rgba(34,211,238,0.10));border:1px solid rgba(255,255,255,0.10);border-radius:18px;padding:clamp(28px,4vw,40px);">
+        <h3 style="font-size:clamp(20px,2.4vw,26px);font-weight:800;color:#F5F7FF;margin:0 0 26px;">JYS마케팅이 <span style="background-image:linear-gradient(100deg,#38BDF8,#4ADE80);-webkit-background-clip:text;background-clip:text;color:transparent;">이렇게 바꿉니다</span></h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px 40px;">
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="flex:1;font-size:15px;color:#7B83AD;text-decoration:line-through;">고비용 패키지</span><span style="color:#4ADE80;font-size:18px;">→</span><span style="flex:1;text-align:right;font-size:15px;font-weight:700;color:#F5F7FF;">맞춤 소액 플랜</span></div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="flex:1;font-size:15px;color:#7B83AD;text-decoration:line-through;">복잡한 보고서</span><span style="color:#4ADE80;font-size:18px;">→</span><span style="flex:1;text-align:right;font-size:15px;font-weight:700;color:#F5F7FF;">카톡으로 간단 보고</span></div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="flex:1;font-size:15px;color:#7B83AD;text-decoration:line-through;">긴 계약 기간</span><span style="color:#4ADE80;font-size:18px;">→</span><span style="flex:1;text-align:right;font-size:15px;font-weight:700;color:#F5F7FF;">월 단위 유연 계약</span></div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="flex:1;font-size:15px;color:#7B83AD;text-decoration:line-through;">본사 중심 운영</span><span style="color:#4ADE80;font-size:18px;">→</span><span style="flex:1;text-align:right;font-size:15px;font-weight:700;color:#F5F7FF;">지역 밀착 담당자</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" style="background:#0A0E24;scroll-margin-top:80px;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,116px) 24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#4ADE80;margin:0 0 16px;font-weight:700;">WHAT WE DO</p>
+      <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.2;font-weight:800;letter-spacing:-0.02em;color:#F5F7FF;margin:0 0 48px;">다섯 가지로<br><span style="background-image:linear-gradient(100deg,#A855F7,#22D3EE,#4ADE80);-webkit-background-clip:text;background-clip:text;color:transparent;">가게를 키웁니다</span></h2>
+
+      <!-- featured 01 -->
+      <div style="background:linear-gradient(120deg,#7C3AED,#C026D3 60%,#A855F7);border-radius:20px;padding:clamp(28px,4vw,42px);margin-bottom:16px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;">
+        <div style="flex:1 1 320px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:rgba(255,255,255,0.75);margin-bottom:14px;font-weight:700;">01 · LOCAL</div>
+          <h3 style="font-size:clamp(22px,2.8vw,30px);font-weight:800;color:#fff;margin:0 0 14px;line-height:1.25;">네이버 &amp; 카카오<br>지역 마케팅</h3>
+          <p style="font-size:15px;line-height:1.7;color:rgba(255,255,255,0.86);margin:0 0 22px;max-width:420px;">소상공인에게 가장 중요한 지역 검색 노출을 최적화합니다. 손님이 검색할 때 가장 먼저 보이게 만듭니다.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="padding:7px 13px;border-radius:999px;background:rgba(255,255,255,0.18);font-size:13px;font-weight:600;color:#fff;">플레이스 최적화</span>
+            <span style="padding:7px 13px;border-radius:999px;background:rgba(255,255,255,0.18);font-size:13px;font-weight:600;color:#fff;">카카오톡 채널 관리</span>
+            <span style="padding:7px 13px;border-radius:999px;background:rgba(255,255,255,0.18);font-size:13px;font-weight:600;color:#fff;">블로그 체험단</span>
+            <span style="padding:7px 13px;border-radius:999px;background:rgba(255,255,255,0.18);font-size:13px;font-weight:600;color:#fff;">스마트스토어 연동</span>
+          </div>
+        </div>
+        <div style="flex:1 1 220px;min-height:170px;border-radius:14px;background:repeating-linear-gradient(45deg,rgba(255,255,255,0.14) 0 12px,rgba(255,255,255,0.04) 12px 24px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.18);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,0.8);">[ 지도 검색 결과 화면 ]</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#A855F7;margin-bottom:12px;font-weight:700;">02 · SOCIAL</div>
+          <h3 style="font-size:21px;font-weight:800;color:#F5F7FF;margin:0 0 10px;">SNS 콘텐츠 운영</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#9AA3C7;margin:0 0 18px;">인스타·페북·블로그 채널을 대신 운영합니다.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#A855F7;">·</span> 월 12~20회 피드 제작</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#A855F7;">·</span> 릴스·쇼츠 콘텐츠</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#A855F7;">·</span> 해시태그 전략 수립</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#A855F7;">·</span> DM 응대 대행</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#EC4899;margin-bottom:12px;font-weight:700;">03 · CRM</div>
+          <h3 style="font-size:21px;font-weight:800;color:#F5F7FF;margin:0 0 10px;">단골 고객 관리</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#9AA3C7;margin:0 0 18px;">한 번 온 손님을 평생 단골로 만듭니다.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#EC4899;">·</span> 카카오 알림톡·문자</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#EC4899;">·</span> 쿠폰·포인트 설계</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#EC4899;">·</span> 재방문 유도 이벤트</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#EC4899;">·</span> 고객 데이터 리포트</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#22D3EE;margin-bottom:12px;font-weight:700;">04 · ADS</div>
+          <h3 style="font-size:21px;font-weight:800;color:#F5F7FF;margin:0 0 10px;">온라인 광고 운영</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#9AA3C7;margin:0 0 18px;">소액으로 최대 효과를 내는 퍼포먼스 마케팅.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#22D3EE;">·</span> 네이버 파워링크</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#22D3EE;">·</span> 메타(인스타·페북) 광고</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#22D3EE;">·</span> 당근마켓 광고</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#22D3EE;">·</span> 월별 성과 리포트</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#4ADE80;margin-bottom:12px;font-weight:700;">05 · BRAND</div>
+          <h3 style="font-size:21px;font-weight:800;color:#F5F7FF;margin:0 0 10px;">브랜딩 &amp; 디자인</h3>
+          <p style="font-size:14.5px;line-height:1.65;color:#9AA3C7;margin:0 0 18px;">가게의 첫인상을 바꾸는 브랜드 작업.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#4ADE80;">·</span> 로고·간판 디자인</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#4ADE80;">·</span> 메뉴판·전단지 제작</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#4ADE80;">·</span> 매장 전문 촬영</li>
+            <li style="font-size:14px;color:#C9CEE8;display:flex;gap:9px;"><span style="color:#4ADE80;">·</span> SNS 채널 아트</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS ===================== -->
+  <section id="process" style="background:#06070F;scroll-margin-top:80px;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,116px) 24px;">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:48px;">
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#22D3EE;margin:0 0 16px;font-weight:700;">HOW IT WORKS</p>
+          <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.2;font-weight:800;letter-spacing:-0.02em;color:#F5F7FF;margin:0;">상담부터 성과까지<br><span style="background-image:linear-gradient(100deg,#22D3EE,#4ADE80);-webkit-background-clip:text;background-clip:text;color:transparent;">단 7일</span></h2>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);font-size:13.5px;font-weight:600;color:#C9CEE8;">평균 7일 내 운영 시작 <span style="color:#4ADE80;">✦</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+        <div style="border-radius:18px;padding:26px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(165deg,#7C3AED,#A855F7);box-shadow:0 14px 36px rgba(124,58,237,0.3);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.78);font-weight:700;">STEP 1</span><div><div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:6px;">상담 신청</div><div style="font-size:13px;color:rgba(255,255,255,0.82);line-height:1.5;">무료 상담 접수</div></div></div>
+        <div style="border-radius:18px;padding:26px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(165deg,#C026D3,#EC4899);box-shadow:0 14px 36px rgba(236,72,153,0.3);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.78);font-weight:700;">STEP 2</span><div><div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:6px;">현황 진단</div><div style="font-size:13px;color:rgba(255,255,255,0.82);line-height:1.5;">매장 분석·목표 설정</div></div></div>
+        <div style="border-radius:18px;padding:26px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(165deg,#0EA5A4,#4ADE80);box-shadow:0 14px 36px rgba(16,185,164,0.3);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.82);font-weight:700;">STEP 3</span><div><div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:6px;">전략 수립</div><div style="font-size:13px;color:rgba(255,255,255,0.88);line-height:1.5;">맞춤 플랜 제안·계약</div></div></div>
+        <div style="border-radius:18px;padding:26px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(165deg,#4F46E5,#3B82F6);box-shadow:0 14px 36px rgba(79,70,229,0.3);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.78);font-weight:700;">STEP 4</span><div><div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:6px;">실행 운영</div><div style="font-size:13px;color:rgba(255,255,255,0.82);line-height:1.5;">콘텐츠 제작·광고</div></div></div>
+        <div style="border-radius:18px;padding:26px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(165deg,#0891B2,#22D3EE);box-shadow:0 14px 36px rgba(8,145,178,0.3);"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.82);font-weight:700;">STEP 5</span><div><div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:6px;">성과 보고</div><div style="font-size:13px;color:rgba(255,255,255,0.88);line-height:1.5;">월간 리포트·개선</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section id="reviews" style="background:#0A0E24;scroll-margin-top:80px;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,116px) 24px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#EC4899;margin:0 0 16px;font-weight:700;">REAL STORES</p>
+      <h2 style="font-size:clamp(28px,3.8vw,42px);line-height:1.2;font-weight:800;letter-spacing:-0.02em;color:#F5F7FF;margin:0 0 48px;">사장님들이<br><span style="background-image:linear-gradient(100deg,#EC4899,#A855F7);-webkit-background-clip:text;background-clip:text;color:transparent;">먼저 말합니다</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:30px;border-top:3px solid #A855F7;">
+          <div style="color:#FACC15;font-size:15px;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+          <p style="font-size:15.5px;line-height:1.7;color:#E3E6F5;margin:0 0 24px;">"광고비는 반으로 줄었는데 매출은 30%나 올랐어요. 담당 마케터가 카톡으로 늘 빠르게 답해줘서 믿음이 가요."</p>
+          <div style="display:flex;align-items:center;gap:11px;"><span style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#A855F7,#22D3EE);flex:0 0 auto;"></span><div><div style="font-size:14px;font-weight:700;color:#F5F7FF;">성남시 뷰티샵 A 사장님</div><div style="font-size:12.5px;color:#8A92B8;">광고비 ↓50% · 매출 ↑30%</div></div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:30px;border-top:3px solid #EC4899;">
+          <div style="color:#FACC15;font-size:15px;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+          <p style="font-size:15.5px;line-height:1.7;color:#E3E6F5;margin:0 0 24px;">"SNS는 늘 뒷전이었는데, 3개월 만에 팔로워가 500명에서 4,200명으로 늘었어요. 신규 손님이 확 늘었습니다."</p>
+          <div style="display:flex;align-items:center;gap:11px;"><span style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#EC4899,#F472B6);flex:0 0 auto;"></span><div><div style="font-size:14px;font-weight:700;color:#F5F7FF;">마포구 브런치 카페 B 사장님</div><div style="font-size:12.5px;color:#8A92B8;">팔로워 620 → 4,200명</div></div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:30px;border-top:3px solid #22D3EE;">
+          <div style="color:#FACC15;font-size:15px;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+          <p style="font-size:15.5px;line-height:1.7;color:#E3E6F5;margin:0 0 24px;">"처음 창업이라 막막했는데 전략부터 실행까지 다 함께해줘서 든든했어요. 이제는 믿고 맡깁니다."</p>
+          <div style="display:flex;align-items:center;gap:11px;"><span style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#22D3EE,#4ADE80);flex:0 0 auto;"></span><div><div style="font-size:14px;font-weight:700;color:#F5F7FF;">해운대 온라인 의류몰 C 사장님</div><div style="font-size:12.5px;color:#8A92B8;">첫 창업 안착</div></div></div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#5F6792;margin:22px 0 0;">* 위 후기는 서비스 이해를 돕기 위한 가상 사례입니다.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" style="background:#0A0E24;scroll-margin-top:80px;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,100px) 24px;">
+      <div style="background:linear-gradient(125deg,#6D28D9,#4F46E5 55%,#7C3AED);border-radius:26px;padding:clamp(30px,4vw,52px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:start;box-shadow:0 30px 80px rgba(79,70,229,0.3);">
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.16em;color:rgba(255,255,255,0.75);margin:0 0 16px;font-weight:700;">FREE DIAGNOSIS</p>
+          <h2 style="font-size:clamp(26px,3.4vw,38px);line-height:1.22;font-weight:800;letter-spacing:-0.02em;color:#fff;margin:0 0 18px;">우리 가게,<br>지금 <span style="color:#4ADE80;">무료로</span> 진단받기</h2>
+          <p style="font-size:16px;line-height:1.7;color:rgba(255,255,255,0.85);margin:0 0 32px;max-width:380px;">매장 현황을 남겨주시면, 맞춤 마케팅 진단 리포트를 <strong style="color:#fff;">완전 무료</strong>로 보내드립니다.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:center;gap:11px;font-size:15px;color:#fff;"><span style="opacity:.8;">📞</span> 02-1234-5678</div>
+            <div style="display:flex;align-items:center;gap:11px;font-size:15px;color:#fff;"><span style="opacity:.8;">💬</span> 카카오 채널 @JYS마케팅</div>
+            <div style="display:flex;align-items:center;gap:11px;font-size:15px;color:#fff;"><span style="opacity:.8;">✉️</span> contact@jys-marketing.co.kr</div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:18px;padding:clamp(24px,3vw,34px);">
+          <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}">
+            <div style="font-size:18px;font-weight:800;color:#15183A;margin-bottom:22px;">무료 진단 신청서</div>
+            <input type="text" required placeholder="대표자 성함" style="width:100%;height:50px;padding:0 16px;border:1px solid #E2E5F0;border-radius:11px;font-size:15px;color:#15183A;margin-bottom:13px;outline:none;" style-focus="border-color:#7C3AED">
+            <input type="text" required placeholder="연락처 (휴대폰)" style="width:100%;height:50px;padding:0 16px;border:1px solid #E2E5F0;border-radius:11px;font-size:15px;color:#15183A;margin-bottom:13px;outline:none;" style-focus="border-color:#7C3AED">
+            <select required style="width:100%;height:50px;padding:0 14px;border:1px solid #E2E5F0;border-radius:11px;font-size:15px;color:#15183A;margin-bottom:13px;outline:none;background:#fff;" style-focus="border-color:#7C3AED">
+              <option value="">업종 선택</option>
+              <option>외식 · 카페</option>
+              <option>뷰티 · 헤어</option>
+              <option>이커머스 · 쇼핑몰</option>
+              <option>교육 · 학원</option>
+              <option>인테리어 · 리모델링</option>
+              <option>기타</option>
+            </select>
+            <input type="text" placeholder="대상 지역 (예: 서울 성북구)" style="width:100%;height:50px;padding:0 16px;border:1px solid #E2E5F0;border-radius:11px;font-size:15px;color:#15183A;margin-bottom:20px;outline:none;" style-focus="border-color:#7C3AED">
+            <button type="submit" style="width:100%;height:52px;border:none;border-radius:{{ btnRadius }};background:linear-gradient(135deg,#34D399,#4ADE80);color:#06231A;font-size:16px;font-weight:800;">무료 진단 리포트 신청하기</button>
+            <p style="font-size:12px;color:#9AA0B8;text-align:center;margin:14px 0 0;">제출 시 개인정보 수집·이용에 동의하게 됩니다.</p>
+          </form>
+          </sc-if>
+          <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:30px 0;">
+            <div style="width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#34D399,#4ADE80);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#06231A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3 style="font-size:21px;font-weight:800;color:#15183A;margin:0 0 10px;">신청이 접수되었습니다</h3>
+            <p style="font-size:15px;line-height:1.7;color:#5b6280;margin:0 0 24px;">평일 기준 1영업일 내에 담당 마케터가<br>직접 연락드리겠습니다. 감사합니다.</p>
+            <button onClick="{{ resetForm }}" style="height:46px;padding:0 24px;border:1px solid #E2E5F0;background:#fff;border-radius:{{ btnRadius }};font-size:15px;font-weight:700;color:#15183A;">새 문의 작성</button>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#06070F;position:relative;overflow:hidden;">
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:64px 24px 0;z-index:2;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:56px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
+            <img src="./uploads/logo.png" alt="JYS마케팅 로고" style="height:30px;width:auto;">
+            <span style="font-weight:800;font-size:17px;color:#F5F7FF;">JYS마케팅</span>
+          </div>
+          <p style="font-size:14px;line-height:1.7;color:#8A92B8;margin:0;max-width:260px;">소상공인 곁에서, 함께 성장하는 마케팅 파트너. 동네 가게의 단골을 만듭니다.</p>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#F5F7FF;margin-bottom:16px;">서비스</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#8A92B8;">
+            <a href="#services" style="color:#8A92B8;">지역 마케팅</a>
+            <a href="#services" style="color:#8A92B8;">SNS 운영</a>
+            <a href="#services" style="color:#8A92B8;">단골 CRM</a>
+            <a href="#services" style="color:#8A92B8;">광고 운영</a>
+            <a href="#services" style="color:#8A92B8;">브랜딩</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#F5F7FF;margin-bottom:16px;">회사</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#8A92B8;">
+            <a href="#why" style="color:#8A92B8;">왜 JYS마케팅</a>
+            <a href="#reviews" style="color:#8A92B8;">고객 후기</a>
+            <a href="#process" style="color:#8A92B8;">진행 과정</a>
+            <a href="#contact" style="color:#8A92B8;">문의하기</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#F5F7FF;margin-bottom:16px;">문의</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#8A92B8;">
+            <span>02-1234-5678</span>
+            <span>@JYS마케팅</span>
+            <span>contact@jys-marketing.co.kr</span>
+            <span>평일 09:00–18:00</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding:24px 0 30px;">
+        <span style="font-size:12.5px;color:#5F6792;font-family:'JetBrains Mono',monospace;">© 2026 JYS마케팅 (JYS Marketing). All Rights Reserved. · 대표 진용성 · 사업자등록번호 123-45-67890</span>
+      </div>
+    </div>
+    <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:-26px;font-size:clamp(70px,16vw,210px);font-weight:800;letter-spacing:-0.04em;white-space:nowrap;background-image:linear-gradient(180deg,rgba(168,85,247,0.10),rgba(168,85,247,0));-webkit-background-clip:text;background-clip:text;color:transparent;z-index:1;pointer-events:none;">JYS마케팅</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;민트 그린&quot;,&quot;시안&quot;,&quot;핑크&quot;,&quot;바이올렛&quot;],&quot;default&quot;:&quot;민트 그린&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroMock&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;roundedButtons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, submitted: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 48;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() {
+    const map = {
+      '민트 그린': { grad: 'linear-gradient(135deg,#34D399,#4ADE80)', text: '#06231A', glow: 'rgba(52,211,153,0.4)' },
+      '시안':      { grad: 'linear-gradient(135deg,#22D3EE,#0EA5E9)', text: '#04222B', glow: 'rgba(34,211,238,0.4)' },
+      '핑크':      { grad: 'linear-gradient(135deg,#F472B6,#EC4899)', text: '#ffffff',  glow: 'rgba(236,72,153,0.42)' },
+      '바이올렛':  { grad: 'linear-gradient(135deg,#A855F7,#7C3AED)', text: '#ffffff',  glow: 'rgba(168,85,247,0.45)' }
+    };
+    const a = map[this.props.accent] || map['민트 그린'];
+    const btnRadius = this.props.roundedButtons ? '999px' : '12px';
+    const heroMock = this.props.heroMock !== false;
+    const showStats = this.props.showStats !== false;
+    const scrolled = this.state.scrolled;
+
+    const navBase = { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50, transition: 'background .3s ease, border-color .3s ease' };
+    const navStyle = scrolled
+      ? { ...navBase, background: 'rgba(8,11,28,0.82)', backdropFilter: 'saturate(180%) blur(14px)', WebkitBackdropFilter: 'saturate(180%) blur(14px)', borderBottom: '1px solid rgba(255,255,255,0.08)' }
+      : { ...navBase, background: 'transparent', borderBottom: '1px solid transparent' };
+
+    return {
+      ctaGradient: a.grad,
+      ctaText: a.text,
+      ctaGlow: a.glow,
+      btnRadius,
+      navStyle,
+      heroMockDisplay: heroMock ? 'block' : 'none',
+      statsDisplay: showStats ? 'block' : 'none',
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+      resetForm: () => this.setState({ submitted: false })
+    };
+  }
+}
+</script>
+<script src="./chatbot.js"></script>
+</body>
+</html>

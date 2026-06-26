@@ -1,0 +1,14 @@
+{
+  "name": "jys-marketing-chatbot",
+  "version": "1.0.0",
+  "description": "JYS마케팅 랜딩페이지 AI 챗봇",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.67.0"
+  }
+}
